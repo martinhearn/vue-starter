@@ -9,27 +9,30 @@ var vueify = require('vueify');
 
 
 gulp.task('html', function () {
-    return gulp.src('src/*.html')
+     gulp.src('src/*.html')
         .pipe(gulp.dest('public'));
 });
 
 
 gulp.task('css',function() {
-    return gulp.src('src/css/main.css')
+
+    gulp.src('node_modules/bootstrap/dist/css/*').pipe(gulp.dest('public/css/bootstrap'));
+
+     gulp.src('src/css/main.css')
         .pipe(autoprefixer())
         .pipe(minifycss())
         .pipe(gulp.dest('public/css/min'))
 });
 
 gulp.task('js',function() {
-        return gulp.src('src/js/vue.js')
+         gulp.src('src/js/vue.js')
             .pipe(browserify({ transform: 'vueify', debug: true }))
              .pipe(rename('js/bundle.js'))
              .pipe(gulp.dest('public'))
 });
 
 gulp.task('misc', function () {
-    return gulp.src([
+     gulp.src([
             'src/*.{ico,png,txt}',
             'src/.htaccess'
         ])
