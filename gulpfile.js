@@ -16,6 +16,7 @@ gulp.task('html', function () {
 
 gulp.task('css',function() {
 
+    gulp.src('node_modules/bootstrap/dist/fonts/*').pipe(gulp.dest('public/css/fonts'));
     gulp.src('node_modules/bootstrap/dist/css/*').pipe(gulp.dest('public/css/bootstrap'));
 
      gulp.src('src/css/main.css')
